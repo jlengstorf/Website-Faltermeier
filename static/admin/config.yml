@@ -1,0 +1,805 @@
+backend:
+  name: git-gateway
+  branch: master
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "[skip ci] Upload “{{path}}”"
+    deleteMedia: "[skip ci] Delete “{{path}}”"
+
+locale: de
+
+media_folder: src/img
+public_folder: /img
+
+collections:
+  - name: "pages"
+    label: "Seiten"
+    editor:
+      preview: false
+    files:
+      - file: "src/pages/index.md"
+        label: "Startseite"
+        name: "index"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "index-page",
+            }
+          - {
+              label: Startsektion,
+              name: herosection,
+              widget: object,
+              fields:
+                [
+                  { label: Titel, name: title, widget: string },
+                  { label: Untertitel, name: subtitle, widget: string },
+                  {
+                    label: Kontakttext,
+                    name: contactText,
+                    widget: string,
+                    default: "Kontakt",
+                  },
+                  { label: Telefon, name: telephone, widget: string },
+                  { label: TelefonLink, name: telephoneLink, widget: string },
+                  { label: E-Mail, name: email, widget: string },
+                  { label: Adresse, name: address, widget: string },
+                  { label: Handlungsaufforderung, name: cta, widget: string },
+                  {
+                    label: Bild Objekt,
+                    name: imageObject,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Titel, name: title, widget: string },
+                        { label: Alt, name: alt, widget: string },
+                        { label: Bild, name: image, widget: image },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: Aktuelles,
+              name: news,
+              widget: object,
+              fields:
+                [
+                  { label: Titel, name: title, widget: string },
+                  { label: Untertitel, name: subtitle, widget: string },
+                  {
+                    label: Inhalt,
+                    name: content,
+                    widget: markdown,
+                    required: false,
+                  },
+                ],
+            }
+          - {
+              label: Konzept,
+              name: benefits,
+              widget: object,
+              fields:
+                [
+                  { label: Titel, name: title, widget: string },
+                  { label: Untertitel, name: subtitle, widget: string },
+                  {
+                    label: Beschreibung Teil 1,
+                    name: description1,
+                    widget: markdown,
+                  },
+                  {
+                    label: Beschreibung Teil 2,
+                    name: description2,
+                    widget: markdown,
+                  },
+                  { label: Aufklappen Text, name: mobileCta, widget: string },
+                  {
+                    label: Link,
+                    name: benefitsLink,
+                    widget: object,
+                    fields:
+                      [
+                        { label: LinkText, name: linkText, widget: string },
+                        { label: LinkURL, name: linkUrl, widget: string },
+                      ],
+                  },
+                  {
+                    label: Elemente,
+                    name: blurbs,
+                    widget: list,
+                    fields:
+                      [
+                        { label: Bezeichnung, name: title, widget: string },
+                        {
+                          label: Bild Objekt,
+                          name: imageObject,
+                          widget: object,
+                          fields:
+                            [
+                              { label: Titel, name: title, widget: string },
+                              { label: Alt, name: alt, widget: string },
+                              { label: Bild, name: image, widget: image },
+                            ],
+                        },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: Leistungen,
+              name: services,
+              widget: object,
+              fields:
+                [
+                  { label: Titel, name: title, widget: string },
+                  { label: Untertitel, name: subtitle, widget: string },
+                  {
+                    label: Link,
+                    name: servicesLink,
+                    widget: object,
+                    fields:
+                      [
+                        { label: LinkText, name: linkText, widget: string },
+                        { label: LinkURL, name: linkUrl, widget: string },
+                      ],
+                  },
+                  {
+                    label: Leistung,
+                    name: service,
+                    widget: list,
+                    fields:
+                      [
+                        { label: Titel, name: title, widget: string },
+                        {
+                          label: Beschreibung,
+                          name: description,
+                          widget: text,
+                        },
+                        {
+                          label: Link,
+                          name: serviceLink,
+                          widget: object,
+                          fields:
+                            [
+                              {
+                                label: LinkText,
+                                name: linkText,
+                                widget: string,
+                              },
+                              { label: LinkURL, name: linkUrl, widget: string },
+                            ],
+                        },
+                        {
+                          label: Bild Objekt,
+                          name: imageObject,
+                          widget: object,
+                          fields:
+                            [
+                              { label: Titel, name: title, widget: string },
+                              { label: Alt, name: alt, widget: string },
+                              { label: Bild, name: image, widget: image },
+                            ],
+                        },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: Methoden,
+              name: methods,
+              widget: object,
+              fields:
+                [
+                  { label: Titel, name: title, widget: string },
+                  { label: Untertitel, name: subtitle, widget: string },
+                  {
+                    label: Methode,
+                    name: method,
+                    widget: list,
+                    fields:
+                      [
+                        { label: Titel, name: title, widget: string },
+                        {
+                          label: Beschreibung,
+                          name: description,
+                          widget: text,
+                        },
+                        {
+                          label: Bild Objekt,
+                          name: imageObject,
+                          widget: object,
+                          fields:
+                            [
+                              {
+                                label: Titel,
+                                name: title,
+                                widget: string,
+                                required: false,
+                              },
+                              {
+                                label: Alt,
+                                name: alt,
+                                widget: string,
+                                required: false,
+                              },
+                              {
+                                label: Bild,
+                                name: image,
+                                widget: image,
+                                required: false,
+                              },
+                            ],
+                        },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: Kontakt,
+              name: contact,
+              widget: object,
+              fields:
+                [
+                  { label: Titel, name: title, widget: string },
+                  { label: Untertitel, name: subtitle, widget: string },
+                  {
+                    label: Eigenschaften,
+                    name: attributes,
+                    widget: list,
+                    fields:
+                      [
+                        {
+                          label: Beschreibung,
+                          name: description,
+                          widget: text,
+                        },
+                        {
+                          label: Bild Objekt,
+                          name: imageObject,
+                          widget: object,
+                          fields:
+                            [
+                              { label: Titel, name: title, widget: string },
+                              { label: Alt, name: alt, widget: string },
+                              { label: Bild, name: image, widget: image },
+                            ],
+                        },
+                      ],
+                  },
+                  {
+                    label: Sprechzeiten,
+                    name: openingHours,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Titel, name: title, widget: string },
+                        {
+                          label: Tage,
+                          name: days,
+                          widget: list,
+                          fields:
+                            [
+                              { label: Tag, name: day, widget: string },
+                              {
+                                label: Zeiten,
+                                name: times,
+                                widget: list,
+                                fields:
+                                  [
+                                    {
+                                      label: Zeit,
+                                      name: time,
+                                      widget: string,
+                                      default: "geschlossen",
+                                    },
+                                  ],
+                              },
+                            ],
+                        },
+                      ],
+                  },
+                  {
+                    label: Terminanfrage,
+                    name: appointment,
+                    widget: object,
+                    fields:
+                      [
+                        {
+                          label: Überschrift,
+                          name: title,
+                          widget: string,
+                          default: "Hier ausfüllen",
+                        },
+                        {
+                          label: Wunschtermin Text,
+                          name: appointmentWishText,
+                          widget: string,
+                          default: "Hier ausfüllen",
+                        },
+                        {
+                          label: Handlungsaufforderung,
+                          name: cta,
+                          widget: string,
+                        },
+                      ],
+                  },
+                  {
+                    label: Google Maps Link,
+                    name: googleMapsLink,
+                    widget: string,
+                  },
+                ],
+            }
+          - {
+              label: Fußzeile,
+              name: footer,
+              widget: object,
+              field:
+                {
+                  label: Copyright,
+                  name: copyright,
+                  widget: string,
+                  default: "Hier ausfüllen",
+                },
+            }
+      - file: "src/pages/praxis/praxis.md"
+        label: "Praxisseite"
+        name: "praxis"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "praxis-page",
+            }
+          - {
+              label: Profilbild,
+              name: imageObject,
+              widget: object,
+              fields:
+                [
+                  { label: Titel, name: title, widget: string },
+                  { label: Alt, name: alt, widget: string },
+                  { label: Bild, name: image, widget: image },
+                ],
+            }
+          - { label: Name, name: name, widget: string }
+          - {
+              label: Lebenslauf,
+              name: cv,
+              widget: list,
+              fields:
+                [
+                  { label: Von-Bis, name: timespan, widget: string },
+                  { label: Tätigkeit, name: activity, widget: string },
+                ],
+            }
+          - {
+              label: Freiwilliges,
+              name: volunteering,
+              widget: list,
+              fields:
+                [
+                  { label: Von-Bis, name: timespan, widget: string },
+                  { label: Tätigkeit, name: activity, widget: string },
+                ],
+            }
+          - {
+              label: Mitgliedschaften,
+              name: memberships,
+              widget: list,
+              fields:
+                [{ label: Mitgliedschaft, name: membership, widget: string }],
+            }
+          - { label: Titel, name: title, widget: string }
+          - { label: Untertitel, name: subtitle, widget: string }
+          - {
+              label: Photosektion,
+              name: photosection,
+              widget: object,
+              fields:
+                [
+                  { label: Titel, name: title, widget: string },
+                  { label: Untertitel, name: subtitle, widget: string },
+                  {
+                    label: Praxisbilder,
+                    name: pictures,
+                    widget: list,
+                    fields:
+                      [
+                        {
+                          label: Bild Objekt,
+                          name: imageObject,
+                          widget: object,
+                          fields:
+                            [
+                              { label: Titel, name: title, widget: string, },
+                              { label: Alt, name: alt, widget: string },
+                              { label: Bild, name: image, widget: image },
+                            ],
+                        },
+                      ],
+                  },
+                ],
+            }
+      - file: "src/pages/impressum/impressum.md"
+        label: "Impressum"
+        name: "impressum"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "impressum-page",
+            }
+          - { label: "Inhalt", name: "body", widget: "markdown" }
+      - file: "src/pages/datenschutz/datenschutz.md"
+        label: "Datenschutz"
+        name: "datenschutz"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "datenschutz-page",
+            }
+          - { label: "Inhalt", name: "body", widget: "markdown" }
+  - name: "services"
+    label: "Leistungen"
+    editor:
+      preview: false
+    files:
+      - file: "src/pages/leistungen/prf.md"
+        label: "PRF"
+        name: "prf"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "prf-page",
+            }
+          - {
+              label: Titelbild,
+              name: imageObject,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: Titel,
+                    name: title,
+                    widget: string,
+                    required: false,
+                  },
+                  { label: Alt, name: alt, widget: string, required: false },
+                  { label: Bild, name: image, widget: image, required: false },
+                ],
+            }
+          - { label: Inhalt, name: "body", widget: "markdown" }
+      - file: "src/pages/leistungen/knochenaufbau.md"
+        label: "Kochenaufbau"
+        name: "knochenaufbau"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "knochenaufbau-page",
+            }
+          - {
+              label: Titelbild,
+              name: imageObject,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: Titel,
+                    name: title,
+                    widget: string,
+                    required: false,
+                  },
+                  { label: Alt, name: alt, widget: string, required: false },
+                  { label: Bild, name: image, widget: image, required: false },
+                ],
+            }
+          - { label: Inhalt, name: "body", widget: "markdown" }
+      - file: "src/pages/leistungen/keramikimplantate.md"
+        label: "Keramikimplantate"
+        name: "keramikimplantate"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "keramikimplantate-page",
+            }
+          - {
+              label: Titelbild,
+              name: imageObject,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: Titel,
+                    name: title,
+                    widget: string,
+                    required: false,
+                  },
+                  { label: Alt, name: alt, widget: string, required: false },
+                  { label: Bild, name: image, widget: image, required: false },
+                ],
+            }
+          - { label: Inhalt, name: "body", widget: "markdown" }
+      - file: "src/pages/leistungen/amalgamsanierung.md"
+        label: "Amalgamsanierung"
+        name: "amalgamsanierung"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "amalgamsanierung-page",
+            }
+          - {
+              label: Titelbild,
+              name: imageObject,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: Titel,
+                    name: title,
+                    widget: string,
+                    required: false,
+                  },
+                  { label: Alt, name: alt, widget: string, required: false },
+                  { label: Bild, name: image, widget: image, required: false },
+                ],
+            }
+          - { label: Inhalt, name: "body", widget: "markdown" }
+      - file: "src/pages/leistungen/kunststofffüllungen.md"
+        label: "Kunstofffüllungen"
+        name: "kunstofffüllungen"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "kunstofffüllungen-page",
+            }
+          - {
+              label: Titelbild,
+              name: imageObject,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: Titel,
+                    name: title,
+                    widget: string,
+                    required: false,
+                  },
+                  { label: Alt, name: alt, widget: string, required: false },
+                  { label: Bild, name: image, widget: image, required: false },
+                ],
+            }
+          - { label: Inhalt, name: "body", widget: "markdown" }
+      - file: "src/pages/leistungen/keramikinlays-onlays.md"
+        label: "Keramikinlays/onlays"
+        name: "keramikinlays-onlays"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "keramikinlays-onlays-page",
+            }
+          - {
+              label: Titelbild,
+              name: imageObject,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: Titel,
+                    name: title,
+                    widget: string,
+                    required: false,
+                  },
+                  { label: Alt, name: alt, widget: string, required: false },
+                  { label: Bild, name: image, widget: image, required: false },
+                ],
+            }
+          - { label: Inhalt, name: "body", widget: "markdown" }
+      - file: "src/pages/leistungen/keramischer-zahnersatz.md"
+        label: "Keramischer Zahnersatz"
+        name: "keramischer-zahnersatz"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "keramischer-zahnersatz-page",
+            }
+          - {
+              label: Titelbild,
+              name: imageObject,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: Titel,
+                    name: title,
+                    widget: string,
+                    required: false,
+                  },
+                  { label: Alt, name: alt, widget: string, required: false },
+                  { label: Bild, name: image, widget: image, required: false },
+                ],
+            }
+          - { label: Inhalt, name: "body", widget: "markdown" }
+      - file: "src/pages/leistungen/veneers.md"
+        label: "Veneers"
+        name: "veneers"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "veneers-page",
+            }
+          - {
+              label: Titelbild,
+              name: imageObject,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: Titel,
+                    name: title,
+                    widget: string,
+                    required: false,
+                  },
+                  { label: Alt, name: alt, widget: string, required: false },
+                  { label: Bild, name: image, widget: image, required: false },
+                ],
+            }
+          - { label: Inhalt, name: "body", widget: "markdown" }
+      - file: "src/pages/leistungen/parodontitistherapie.md"
+        label: "Parodontitistherapie"
+        name: "parodontitistherapie"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "parodontitistherapie-page",
+            }
+          - {
+              label: Titelbild,
+              name: imageObject,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: Titel,
+                    name: title,
+                    widget: string,
+                    required: false,
+                  },
+                  { label: Alt, name: alt, widget: string, required: false },
+                  { label: Bild, name: image, widget: image, required: false },
+                ],
+            }
+          - { label: Inhalt, name: "body", widget: "markdown" }
+      - file: "src/pages/leistungen/weisheitszahnentfernung.md"
+        label: "Weisheitszahnentfernung"
+        name: "weisheitszahnentfernung"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "weisheitszahnentfernung-page",
+            }
+          - {
+              label: Titelbild,
+              name: imageObject,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: Titel,
+                    name: title,
+                    widget: string,
+                    required: false,
+                  },
+                  { label: Alt, name: alt, widget: string, required: false },
+                  { label: Bild, name: image, widget: image, required: false },
+                ],
+            }
+          - { label: Inhalt, name: "body", widget: "markdown" }
+      - file: "src/pages/leistungen/zahnentfernung.md"
+        label: "Zahnentfernung"
+        name: "zahnentfernung"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "zahnentfernung-page",
+            }
+          - {
+              label: Titelbild,
+              name: imageObject,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: Titel,
+                    name: title,
+                    widget: string,
+                    required: false,
+                  },
+                  { label: Alt, name: alt, widget: string, required: false },
+                  { label: Bild, name: image, widget: image, required: false },
+                ],
+            }
+          - { label: Inhalt, name: "body", widget: "markdown" }
+      - file: "src/pages/leistungen/mundhygiene.md"
+        label: "Mundhygiene"
+        name: "mundhygiene"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "mundhygiene-page",
+            }
+          - {
+              label: Titelbild,
+              name: imageObject,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: Titel,
+                    name: title,
+                    widget: string,
+                    required: false,
+                  },
+                  { label: Alt, name: alt, widget: string, required: false },
+                  { label: Bild, name: image, widget: image, required: false },
+                ],
+            }
+          - { label: Inhalt, name: "body", widget: "markdown" }
+      - file: "src/pages/leistungen/schienentherapie.md"
+        label: "Schienentherapie"
+        name: "schienentherapie"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "schienentherapie-page",
+            }
+          - {
+              label: Titelbild,
+              name: imageObject,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: Titel,
+                    name: title,
+                    widget: string,
+                    required: false,
+                  },
+                  { label: Alt, name: alt, widget: string, required: false },
+                  { label: Bild, name: image, widget: image, required: false },
+                ],
+            }
+          - { label: Inhalt, name: "body", widget: "markdown" }

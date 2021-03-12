@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+@layer components {
+  .markdown h1 {
+    @apply text-primary mb-15p sm:mb-30p mt-25p sm:mt-40p font-bold text-25p sm:text-40p;
+  }
+
+  .markdown h2 {
+    @apply text-secondary mb-15p sm:mb-30p mt-25p sm:mt-40p font-medium text-20p sm:text-25p;
+  }
+
+  .markdown h3 {
+    @apply mb-15p sm:mb-30p mt-25p sm:mt-40p font-semibold text-18p sm:text-25p;
+  }
+
+  .markdown h4 {
+    @apply mb-15p mini:mb-16p sm:mb-18p font-medium text-18p sm:text-25p;
+  }
+
+  .markdown p {
+    @apply mb-15p mini:mb-16p sm:mb-18p text-15p mini:text-16p sm:text-18p;
+  }
+
+  .markdownLeistungen h1 {
+    @apply mb-15p sm:mb-30p text-primary text-center font-bold text-25p sm:text-40p;
+  }
+
+  .markdownLeistungen h2 {
+    @apply mb-40p sm:mb-80p text-secondary text-center font-medium text-20p sm:text-25p;
+  }
+
+  .markdownLeistungen h3 {
+    @apply text-secondary mb-15p sm:mb-30p mt-25p sm:mt-40p font-medium text-20p sm:text-25p;
+  }
+
+  .markdownLeistungen h4 {
+    @apply mb-15p mini:mb-16p sm:mb-18p font-medium text-18p sm:text-25p;
+  }
+
+  .markdownLeistungen p {
+    @apply mb-15p mini:mb-16p sm:mb-18p text-15p mini:text-16p sm:text-18p;
+  }
+
+  .markdownLeistungen ul {
+    @apply mb-15p sm:mb-30p list-disc;
+  }
+
+  .markdownLeistungen ul li {
+    @apply mb-15p mini:mb-16p sm:mb-18p text-15p mini:text-16p sm:text-18p ml-5;
+  }
+
+  .markdownLeistungen ol {
+    @apply mb-15p sm:mb-30p list-decimal;
+  }
+
+  .markdownLeistungen ol li {
+    @apply mb-15p mini:mb-16p sm:mb-18p text-15p mini:text-16p sm:text-18p ml-5;
+  }
+  
+}
