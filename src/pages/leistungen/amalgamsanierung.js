@@ -9,7 +9,6 @@ import Layout from "../../components/Layout";
 import { Helmet } from "react-helmet";
 
 const AmalgamsanierungPage = ({ data }) => {
-  const { frontmatter } = data.forLayout;
   const { html } = data.markdownRemark;
   const pageFrontmatter = data.markdownRemark.frontmatter;
 
@@ -36,12 +35,7 @@ const AmalgamsanierungPage = ({ data }) => {
           content="Schonende Entfernung giftiges Amalgams aus den Zähnen unter höchster Schutzmaßnahmen."
         />
       </Helmet>
-      <Layout
-        herosection={frontmatter.herosection}
-        content={frontmatter.news.content}
-        contact={frontmatter.contact}
-        footer={frontmatter.footer}
-      >
+      <Layout>
         <div class="sm:mb-80p sm:px-25p">
           {pageFrontmatter.imageObject && (
             <GatsbyImage
@@ -108,38 +102,6 @@ export const query = graphql`
         }
       }
       html
-    }
-    forLayout: markdownRemark(
-      frontmatter: { templateKey: { eq: "index-page" } }
-    ) {
-      frontmatter {
-        contact {
-          openingHours {
-            days {
-              day
-              times {
-                time
-              }
-            }
-            title
-          }
-        }
-        footer {
-          copyright
-        }
-        herosection {
-          address
-          contactText
-          email
-          subtitle
-          telephone
-          telephoneLink
-        }
-        news {
-          content
-        }
-        templateKey
-      }
     }
   }
 `;

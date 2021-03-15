@@ -31,12 +31,7 @@ const IndexPage = ({ data }) => {
           content={`${withPrefix("/")}img/Dr-Faltermeier.jpeg`}
         />
       </Helmet>
-      <Layout
-        herosection={frontmatter.herosection}
-        content={frontmatter.news.content}
-        contact={frontmatter.contact}
-        footer={frontmatter.footer}
-      >
+      <Layout>
         <IndexPageTemplate
           herosection={frontmatter.herosection}
           news={frontmatter.news}

@@ -64,7 +64,7 @@ const MobileMenu = ({ content, toggleVisible, visible }) => {
               </Link>
               {content !== "" && (
                 <Link
-                  class="lg:hidden xl:inline pb-2 px-5 text-20p sm:text-25p font-medium"
+                  class="lg:hidden xl:inline py-2 px-5 text-20p sm:text-25p font-medium"
                   onClick={toggleVisible}
                   onKeyDown={toggleVisible}
                   to="/#aktuelles"

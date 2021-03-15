@@ -2,19 +2,14 @@ import React from "react";
 
 import Layout from "../components/Layout";
 
-import { graphql, Link } from "gatsby";
+import { Link } from "gatsby";
 
 import { ReactComponent as Zahnlücke } from "../img/zahnlücke.svg";
 
-const NotFoundPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark;
+const NotFoundPage = () => {
 
   return (
     <Layout
-      herosection={frontmatter.herosection}
-      content={frontmatter.news.content}
-      contact={frontmatter.contact}
-      footer={frontmatter.footer}
     >
       <div class="px-5 mini:px-25p mt-50p sm:mt-100p mx-auto text-center">
         <h1 class="mb-15p sm:mb-30p text-primary font-bold text-25p sm:text-40p">
@@ -34,38 +29,3 @@ const NotFoundPage = ({ data }) => {
 };
 
 export default NotFoundPage;
-
-export const notFoundQuery = graphql`
-  {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
-      frontmatter {
-        contact {
-          openingHours {
-            days {
-              day
-              times {
-                time
-              }
-            }
-            title
-          }
-        }
-        footer {
-          copyright
-        }
-        herosection {
-          address
-          contactText
-          email
-          subtitle
-          telephone
-          telephoneLink
-        }
-        news {
-          content
-        }
-        templateKey
-      }
-    }
-  }
-`;

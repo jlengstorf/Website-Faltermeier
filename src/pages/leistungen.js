@@ -10,16 +10,10 @@ import { withPrefix } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 const LeistungenPage = ({ data }) => {
-  const { frontmatter } = data.forLayout;
   const { placeholderImage } = data;
 
   return (
-    <Layout
-      herosection={frontmatter.herosection}
-      content={frontmatter.news.content}
-      contact={frontmatter.contact}
-      footer={frontmatter.footer}
-    >
+    <Layout>
       <Helmet>
         <html lang="de" />
         <title>Zahnarztpraxis Dr. Sandra Faltermeier Leistungsübersicht</title>
@@ -59,13 +53,13 @@ const LeistungenPage = ({ data }) => {
             class="h-full w-full"
             image={placeholderImage.childImageSharp.gatsbyImageData}
           />
-            <div class="absolute w-10/12 sm:w-auto left-1/2 sm:left-0 transform sm:transform-none -translate-x-1/2 sm:-translate-x-0 p-5 mini:p-25p md:p-50p mx-auto sm:mx-0 sm:ml-12 bg-opacity-80 bg-white">
-              <h1 class="text-primary font-bold text-25p sm:text-40p">
-                Leistungen
-              </h1>
-              <h2 class="text-secondary font-medium text-20p sm:text-25p">
-                Unsere Leistungen in der Übersicht
-              </h2>
+          <div class="absolute w-10/12 sm:w-auto left-1/2 sm:left-0 transform sm:transform-none -translate-x-1/2 sm:-translate-x-0 p-5 mini:p-25p md:p-50p mx-auto sm:mx-0 sm:ml-12 bg-opacity-80 bg-white">
+            <h1 class="text-primary font-bold text-25p sm:text-40p">
+              Leistungen
+            </h1>
+            <h2 class="text-secondary font-medium text-20p sm:text-25p">
+              Unsere Leistungen in der Übersicht
+            </h2>
           </div>
         </div>
         <nav class="mx-auto flex flex-col md:flex-row justify-between md:items-between max-w-1000p px-5 mini:px-25p">
@@ -199,38 +193,6 @@ export const LeistungenPageQuery = graphql`
           formats: [AVIF, WEBP, AUTO]
           placeholder: BLURRED
         )
-      }
-    }
-    forLayout: markdownRemark(
-      frontmatter: { templateKey: { eq: "index-page" } }
-    ) {
-      frontmatter {
-        contact {
-          openingHours {
-            days {
-              day
-              times {
-                time
-              }
-            }
-            title
-          }
-        }
-        footer {
-          copyright
-        }
-        herosection {
-          address
-          contactText
-          email
-          subtitle
-          telephone
-          telephoneLink
-        }
-        news {
-          content
-        }
-        templateKey
       }
     }
   }

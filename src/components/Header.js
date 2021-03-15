@@ -57,7 +57,7 @@ const Header = ({ herosection, content }) => {
           </Link>
           {content !== "" && (
             <Link
-              class="lg:hidden xl:inline text-primary hover:text-secondary"
+              class="lg:hidden xl:block text-primary hover:text-secondary"
               to="/#aktuelles"
             >
               Aktuelles
