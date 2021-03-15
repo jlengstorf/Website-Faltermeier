@@ -135,7 +135,7 @@ export const query = graphql`
                   gatsbyImageData(
                     formats: [AVIF, WEBP, AUTO]
                     quality: 80
-                    layout: CONSTRAINED
+                    
                   )
                 }
               }
@@ -161,7 +161,7 @@ export const query = graphql`
               image {
                 childImageSharp {
                   gatsbyImageData(
-                    layout: CONSTRAINED
+                    
                     quality: 80
                     formats: [AVIF, WEBP, AUTO]
                   )

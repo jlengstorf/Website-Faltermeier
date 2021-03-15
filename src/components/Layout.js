@@ -36,7 +36,6 @@ const Layout = ({ children }) => {
             address
             contactText
             email
-            subtitle
             telephone
             telephoneLink
           }
