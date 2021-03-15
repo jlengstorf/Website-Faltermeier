@@ -60,7 +60,7 @@
     "clean": "gatsby clean",
     "dev": "gatsby develop",
     "cleandev": "gatsby clean && gatsby develop",
-    "build": "gatsby build --log-pages",
+    "build": "gatsby build",
     "serve": "gatsby serve",
     "deploy": "netlify deploy --prod --dir=public",
     "builddeploy": "gatsby build && netlify deploy --prod --dir=public",

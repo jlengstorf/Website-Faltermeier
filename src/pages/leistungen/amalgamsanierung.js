@@ -86,23 +86,20 @@ export const query = graphql`
       frontmatter {
         title
         subtitle
-        
+        imageObject {
+          title
+          alt
+          image {
+            childImageSharp {
+              gatsbyImageData(
+                quality: 80             
+                formats: [AVIF, WEBP, AUTO]    
+              )
+            }
+          }
+        }
       }
       html
     }
   }
 `;
-
-
-/* imageObject {
-  title
-  alt
-  image {
-    childImageSharp {
-      gatsbyImageData(
-        quality: 80             
-        formats: [AVIF, WEBP, AUTO]    
-      )
-    }
-  }
-} */
