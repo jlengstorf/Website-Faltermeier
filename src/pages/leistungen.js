@@ -7,7 +7,7 @@ import Layout from "../components/Layout";
 import { Helmet } from "react-helmet";
 import { withPrefix } from "gatsby";
 
-import BackgroundImage from "gatsby-background-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const LeistungenPage = ({ data }) => {
   const { frontmatter } = data.forLayout;
@@ -46,19 +46,28 @@ const LeistungenPage = ({ data }) => {
         />
       </Helmet>
       <main>
-        <BackgroundImage
+        {/* <BackgroundImage
           class="h-72 md:h-96 bg-cover flex items-center mb-50p sm:mb-100p"
           fluid={placeholderImage.childImageSharp.fluid}
         >
-          <div class="p-5 mini:p-25p md:p-50p mx-auto sm:mx-0 sm:ml-12 bg-opacity-80 bg-white">
-            <h1 class="text-primary font-bold text-25p sm:text-40p">
-              Leistungen
-            </h1>
-            <h2 class="text-secondary font-medium text-20p sm:text-25p mb-15p sm:mb-35p">
-              Unsere Leistungen in der Übersicht
-            </h2>
+          
           </div>
-        </BackgroundImage>
+        </BackgroundImage> */}
+        <div class="h-72 md:h-96 bg-cover flex items-center mb-50p sm:mb-100p relative">
+          <GatsbyImage
+            loading="eager"
+            class="h-full w-full"
+            image={placeholderImage.childImageSharp.gatsbyImageData}
+          />
+            <div class="absolute w-10/12 sm:w-auto left-1/2 sm:left-0 transform sm:transform-none -translate-x-1/2 sm:-translate-x-0 p-5 mini:p-25p md:p-50p mx-auto sm:mx-0 sm:ml-12 bg-opacity-80 bg-white">
+              <h1 class="text-primary font-bold text-25p sm:text-40p">
+                Leistungen
+              </h1>
+              <h2 class="text-secondary font-medium text-20p sm:text-25p">
+                Unsere Leistungen in der Übersicht
+              </h2>
+          </div>
+        </div>
         <nav class="mx-auto flex flex-col md:flex-row justify-between md:items-between max-w-1000p px-5 mini:px-25p">
           <div class="mx-auto md:mx-0 md:flex md:flex-col md:justify-between">
             <div class="flex flex-col">
@@ -184,9 +193,12 @@ export const LeistungenPageQuery = graphql`
   query leistungenPageQuery {
     placeholderImage: file(relativePath: { eq: "behandlungszimmer.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1300) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(
+          quality: 80
+          layout: FULL_WIDTH
+          formats: [AVIF, WEBP, AUTO]
+          placeholder: BLURRED
+        )
       }
     }
     forLayout: markdownRemark(

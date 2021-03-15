@@ -10,7 +10,6 @@
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "autoprefixer": "^10.2.5",
     "gatsby": "^3.0.4",
-    "gatsby-background-image": "^1.4.1",
     "gatsby-cli": "^3.0.0",
     "gatsby-plugin-google-tagmanager": "^3.0.0",
     "gatsby-plugin-image": "^1.0.1",
