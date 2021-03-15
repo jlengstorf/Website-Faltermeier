@@ -118,12 +118,7 @@ export const query = graphql`
             alt
             image {
               childImageSharp {
-                gatsbyImageData(
-                  quality: 80
-                  layout: FULL_WIDTH
-                  formats: [AVIF, WEBP, AUTO]
-                  placeholder: BLURRED
-                )
+                gatsbyImageData(quality: 80, formats: [AVIF, WEBP, AUTO])
               }
             }
           }
@@ -141,7 +136,6 @@ export const query = graphql`
                     formats: [AVIF, WEBP, AUTO]
                     quality: 80
                     layout: CONSTRAINED
-                    placeholder: BLURRED
                   )
                 }
               }
@@ -170,7 +164,6 @@ export const query = graphql`
                     layout: CONSTRAINED
                     quality: 80
                     formats: [AVIF, WEBP, AUTO]
-                    placeholder: BLURRED
                   )
                 }
               }

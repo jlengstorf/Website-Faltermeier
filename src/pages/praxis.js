@@ -163,7 +163,7 @@ export const PraxisPageQuery = graphql`
                   gatsbyImageData(
                     formats: [AVIF, WEBP, AUTO]
                     quality: 80
-                    placeholder: BLURRED
+                    
                   )
                 }
               }
@@ -189,7 +189,7 @@ export const PraxisPageQuery = graphql`
               gatsbyImageData(
                 formats: [AVIF, WEBP, AUTO]
                 quality: 80
-                placeholder: BLURRED
+                
               )
             }
           }
